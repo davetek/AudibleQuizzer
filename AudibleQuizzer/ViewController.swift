@@ -35,18 +35,34 @@ class ViewController: UIViewController {
     let qa03 = QandA(question: "How do you define the run loop?", answer: "The run loop is a mechanism for managing and responding to events in an event-driven application. It is a process that continuously monitors for input events, and assigns each event that occurs to the appropriate target for processing.", tags: nil, source: nil)
     let qa04 = QandA(question: "Can you describe coding keys?", answer: "Coding keys are nested enumerations that can be declared in a Codeable type, to specify the properties that must be included when instances of the type are encoded or decoded.", tags: nil, source: nil)
     
-
+    var questionsAndAnswers = [QandA]()
     var currentQandA: QandA?
+    
+    @IBOutlet weak var questionButton: UIButton!
+    @IBAction func askQuestion(_ sender: UIButton) {
+        guard let qAndA = pickRandomQandA(from: questionsAndAnswers) else {
+            return
+        }
+        currentQandA = qAndA
+        readQuestion(from: qAndA)
+    }
+    
+    
+    @IBOutlet weak var answerButton: UIButton!
+    
+    @IBAction func sayAnswer(_ sender: UIButton) {
+        guard let qAndA = currentQandA else {
+            return
+        }
+        readAnswer(from: qAndA)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let questionsAndAnswers = [qa01, qa02, qa03, qa04]
-        
-        readNextQuestion(from: questionsAndAnswers)
-//        if let currentQandA = currentQandA {
-//            readAnswer(from: currentQandA)
-//        }
+        questionsAndAnswers = [qa01, qa02, qa03, qa04]
 
     }
 
@@ -69,14 +85,7 @@ class ViewController: UIViewController {
         synthesizer.speak(utterance)
     }
 
-    func readNextQuestion(from collection: [QandA]) {
-        guard let qAndA = pickRandomQandA(from: collection) else {
-            return
-        }
-        
-        currentQandA = qAndA
-        readQuestion(from: qAndA)
-    }
+
 
 
 
