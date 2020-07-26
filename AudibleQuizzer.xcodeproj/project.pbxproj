@@ -13,6 +13,10 @@
 		21E51C6724CCAF6500074221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E51C6524CCAF6500074221 /* Main.storyboard */; };
 		21E51C6924CCAF6D00074221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E51C6824CCAF6D00074221 /* Assets.xcassets */; };
 		21E51C6C24CCAF6D00074221 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E51C6A24CCAF6D00074221 /* LaunchScreen.storyboard */; };
+		21E51C7424CD045000074221 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E51C7324CD045000074221 /* ViewModel.swift */; };
+		21E51C7624CD054700074221 /* QandA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E51C7524CD054700074221 /* QandA.swift */; };
+		21E51C7824CD05A100074221 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E51C7724CD05A100074221 /* Tag.swift */; };
+		21E51C7A24CD0CC700074221 /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E51C7924CD0CC600074221 /* Datastore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		21E51C6824CCAF6D00074221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21E51C6B24CCAF6D00074221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21E51C6D24CCAF6D00074221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21E51C7324CD045000074221 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		21E51C7524CD054700074221 /* QandA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QandA.swift; sourceTree = "<group>"; };
+		21E51C7724CD05A100074221 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		21E51C7924CD0CC600074221 /* Datastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +66,25 @@
 			children = (
 				21E51C5F24CCAF6500074221 /* AppDelegate.swift */,
 				21E51C6124CCAF6500074221 /* SceneDelegate.swift */,
+				21E51C7924CD0CC600074221 /* Datastore.swift */,
+				21E51C7524CD054700074221 /* QandA.swift */,
+				21E51C7724CD05A100074221 /* Tag.swift */,
 				21E51C6324CCAF6500074221 /* ViewController.swift */,
+				21E51C7324CD045000074221 /* ViewModel.swift */,
 				21E51C6524CCAF6500074221 /* Main.storyboard */,
+				21E51C7B24CD0EA200074221 /* Models */,
 				21E51C6824CCAF6D00074221 /* Assets.xcassets */,
 				21E51C6A24CCAF6D00074221 /* LaunchScreen.storyboard */,
 				21E51C6D24CCAF6D00074221 /* Info.plist */,
 			);
 			path = AudibleQuizzer;
+			sourceTree = "<group>";
+		};
+		21E51C7B24CD0EA200074221 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E51C7824CD05A100074221 /* Tag.swift in Sources */,
 				21E51C6424CCAF6500074221 /* ViewController.swift in Sources */,
 				21E51C6024CCAF6500074221 /* AppDelegate.swift in Sources */,
+				21E51C7624CD054700074221 /* QandA.swift in Sources */,
+				21E51C7A24CD0CC700074221 /* Datastore.swift in Sources */,
+				21E51C7424CD045000074221 /* ViewModel.swift in Sources */,
 				21E51C6224CCAF6500074221 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
