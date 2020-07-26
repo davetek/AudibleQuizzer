@@ -17,6 +17,7 @@ import AVFoundation
 class ViewController: UIViewController {
     
     let viewModel = ViewModel()
+    var synthesizer: AVSpeechSynthesizer?
     
     var questionsAndAnswers = [QandA]()
     var currentQuestionsAndAnswers = Set<QandA>()
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
             return
         }
         currentQandA = qAndA
-        readQuestion(from: qAndA)
+        readQuestion(from: qAndA, withSynthesizer: synthesizer)
     }
     
     @IBOutlet weak var answerButton: UIButton!
@@ -36,17 +37,20 @@ class ViewController: UIViewController {
         guard let qAndA = currentQandA else {
             return
         }
-        readAnswer(from: qAndA)
+        readAnswer(from: qAndA, withSynthesizer: synthesizer)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        synthesizer = AVSpeechSynthesizer()
         questionsAndAnswers = viewModel.getListOfQuestions()
     }
     
-    func informStartingOver() {
+    func informStartingOver(withSynthesizer speechSynthesizer: AVSpeechSynthesizer?) {
+        guard let synthesizer = speechSynthesizer else {
+            return
+        }
         let utterance = AVSpeechUtterance(string: "I have read all the questions. Starting over now.")
-        let synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
 
@@ -55,7 +59,7 @@ class ViewController: UIViewController {
         // asked, clear the set to start over
         if currentQuestionsAndAnswers.count == collection.count {
             currentQuestionsAndAnswers.removeAll()
-            //informStartingOver()
+            informStartingOver(withSynthesizer: synthesizer)
         }
         guard let randomQandA = collection.randomElement() else {
             return nil
@@ -71,15 +75,19 @@ class ViewController: UIViewController {
         
     }
 
-    func readQuestion(from qAndA: QandA) {
+    func readQuestion(from qAndA: QandA, withSynthesizer speechSynthesizer: AVSpeechSynthesizer?) {
+        guard let synthesizer = speechSynthesizer else {
+            return
+        }
         let utterance = AVSpeechUtterance(string: qAndA.question)
-        let synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
 
-    func readAnswer(from qAndA: QandA) {
+    func readAnswer(from qAndA: QandA, withSynthesizer speechSynthesizer: AVSpeechSynthesizer?) {
+        guard let synthesizer = speechSynthesizer else {
+            return
+        }
         let utterance = AVSpeechUtterance(string: qAndA.answer)
-        let synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
     
